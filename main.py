@@ -1,15 +1,26 @@
 from typing import Any
+import collections
 
 
 # Задача 1. Найти количество различных элементов массива. Пример: для [1 4 5 1 1 3] ответ 4.
 def count_unique_elems(arr) -> int:
-    pass
+    arr_new = [arr[0]]
+    for i in range(len(arr)):
+        if arr[i] in arr_new:
+            pass
+        else:
+            arr_new.append(arr[i])
+    print(arr_new)
+    print(len(arr_new))
 
 
 # Задача 2. Дан файл с логинами и паролями. Найдите топ10 самых популярных паролей.
 # Ссылка на файл: https://yadi.sk/i/6ywJqzm93HGmy9
-def get_10_popular_password(file: str) -> Any:
-    pass
+def get_10_popular_password() -> Any:
+    with open('pwd.txt', 'r', encoding='utf-8') as file:
+        words = file.read().split()
+    counter = collections.Counter(words)
+    print(f'The most common passwords are: {counter.most_common(10)}')
 
 
 # Задача 3. Дана строка с ссылками. Заменить все ссылки на ***** (5 звёздочек).
@@ -46,9 +57,10 @@ def main():
     print('What do you want me to do? (1 - "get_fib", 2 - "get_index", 3 - "get_skipped_num"')
     number = int(input('Enter the number please: '))
     if number == 1:
-        pass
+        arr = [1, 4, 5, 1, 1, 3, 1, 1, 5, 5, 5, 1, 1, 1, 5, 1, 1, 5,1, 1, 1, 5, 1, 5, 5]
+        count_unique_elems(arr)
     elif number == 2:
-        pass
+        get_10_popular_password()
     elif number == 3:
         urls = 'Adahf https://yandex.ru/ mahgdjh gajh dgajhd  aj.a d gjya djahd ajkdg https://yandex.ru/. ' \
                'https://www.kommersant.ru/doc/4801547?utm_source=yxnews&utm_medium=desktop'
